@@ -1,7 +1,21 @@
 {
   "version": 2,
+  "public": true,
+  "github": {
+    "enabled": false
+  },
   "routes": [
     { "src": "/game.html", "dest": "/game.html" },
+    { "src": "/css/(.*)", "dest": "/css/$1" },
+    { "src": "/js/(.*)", "dest": "/js/$1" },
     { "src": "/(.*)", "dest": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    }
   ]
 }
